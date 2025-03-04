@@ -31,8 +31,8 @@ const Buttons = ({ array, isAuth }) => {
     }
 
     try {
-      await sighOut()
       navigate('/aboutus')
+      await sighOut()
       dispatch(setCleanUp())
     } catch (err) {
       console.error(err)
