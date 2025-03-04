@@ -1,58 +1,84 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import * as style from './ProgressModal.module.scss'
 import { API } from '../../../api/API'
 import { PROGRESS_MODAL_TEXT } from '../../../constants'
 import { setAuthorId, setAuthorName } from '../../../reducers/AuthorReducer'
 import { setQuote, setQuoteId } from '../../../reducers/QuoteReducer'
+import { set } from 'react-hook-form'
 
-import * as style from './ProgressModal.module.scss'
-
-const ProgressModal = ({ isAbort, onClickHandler, signal }) => {
+const ProgressModal = ({ handleModal }) => {
   const dispatch = useDispatch()
-  const [author, setAuthor] = React.useState('')
-  const [authorQuote, setAuthorQuote] = React.useState('')
-  const [isRequestPassed, setIsRequestPassed] = React.useState(false)
+  const [author, setAuthor] = useState('')
+  const [authorQuote, setAuthorQuote] = useState('')
+  const [isRequestPassed, setIsRequestPassed] = useState(false)
+  const [timer, setTimer] = useState(null)
 
-  const fetchAuthor = async ({ token }) => {
-    try {
-      return await API.get('/author', { token, signal })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  const fetchQuote = async ({ authorId, token }) => {
-    try {
-      return await API.get('/quote', { token, authorId, signal })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  const fetchAuthorAndQuote = async () => {
+  const fetchAuthorAndQuote = () => {
     const token = localStorage.getItem('token')
-    try {
-      const response = await fetchAuthor({ token, signal })
-      const { authorId, name } = response.data
-      setAuthor(name)
-      dispatch(setAuthorId(authorId))
-      dispatch(setAuthorName(name))
-      const result = await fetchQuote({ authorId, token, signal })
-      const { quoteId, quote } = result.data
-      setAuthorQuote(quote)
-      dispatch(setQuote(quote))
-      dispatch(setQuoteId(quoteId))
-      setIsRequestPassed(true)
-    } catch (error) {
-      console.error(error)
-    }
+    let timerId
+
+    new Promise((resolve, reject) => {
+      timerId = setTimeout(async () => {
+        try {
+          const response = await fetchAuthor(token)
+          if (!response) {
+            reject('Ошибка запроса автора')
+            return
+          }
+
+          const { authorId, name } = response?.data
+          setAuthor(name)
+          dispatch(setAuthorId(authorId))
+          dispatch(setAuthorName(name))
+
+          resolve(authorId)
+        } catch (error) {
+          reject(error)
+        }
+      }, 2000)
+
+      setTimer(timerId)
+    })
+      .then(authorId => {
+        timerId = setTimeout(async () => {
+          try {
+            const result = await fetchQuote(authorId, token)
+            if (!result) {
+              reject('Ошибка запроса цитаты')
+              return
+            }
+
+            const { quoteId, quote } = result?.data
+            setAuthorQuote(quote)
+            dispatch(setQuote(quote))
+            dispatch(setQuoteId(quoteId))
+            setTimer(null)
+          } catch (error) {
+            reject(error)
+          }
+        }, 2000)
+
+        setTimer(timerId)
+      })
+      .catch(error => console.error('Ошибка в цепочке промисов:', error))
   }
 
   useEffect(() => {
     fetchAuthorAndQuote()
   }, [])
 
+  const handleClick = () => {
+    if (timer) {
+      clearTimeout(timer)
+      setTimer(null)
+      setIsRequestPassed(true)
+      handleModal(true)
+    } else {
+      handleModal(false)
+    }
+  }
   return (
     <div className={style.wrapper}>
       <div className={style.items}>
@@ -65,14 +91,15 @@ const ProgressModal = ({ isAbort, onClickHandler, signal }) => {
           Step2: {PROGRESS_MODAL_TEXT.step2}...
           {author && (!authorQuote ? 'Loading' : 'Completed')}
         </div>
-        {isAbort && (
+        {isRequestPassed && (
           <div className={style.redText}>
             The request was cancelled. The modal will close in 3 seconds
           </div>
         )}
         <button
-          onClick={() => onClickHandler(!isRequestPassed && 'abort')}
-          className={style.button}
+          disabled={isRequestPassed}
+          onClick={() => handleClick()}
+          className={`${style.button} ${isRequestPassed && style.disabled}`}
         >
           Cancel
         </button>
@@ -82,3 +109,19 @@ const ProgressModal = ({ isAbort, onClickHandler, signal }) => {
 }
 
 export default ProgressModal
+
+const fetchAuthor = async token => {
+  try {
+    return await API.get('/author', { token })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const fetchQuote = async (authorId, token) => {
+  try {
+    return await API.get('/quote', { token, authorId })
+  } catch (error) {
+    console.error(error)
+  }
+}

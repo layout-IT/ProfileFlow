@@ -15,18 +15,16 @@ const Profile = () => {
   const quote = useSelector(state => state.quote.quote)
 
   const [name, setName] = useState('')
+  const [token, settoken] = useState('')
   const [isShowModal, setIsShowModal] = useState(false)
-  const [isAbort, setIsAbort] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const controller = new AbortController()
-  const signal = controller.signal
-
   const fetchProfile = async token => {
     try {
       dispatch(setIsLoading(true))
+      await new Promise(resolve => setTimeout(resolve, 2000))
       const response = await API.get('/profile', { token })
       return response
     } catch (error) {
@@ -38,11 +36,11 @@ const Profile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-
     if (!token) {
       navigate('/signin')
       return
     }
+    settoken(token)
 
     fetchProfile(token).then(response => {
       if (response) {
@@ -51,21 +49,19 @@ const Profile = () => {
     })
   }, [dispatch, navigate])
 
-  const onClickHandler = (abort = '') => {
-    if (abort === 'abort') {
-      setTimeout(() => {
-        setIsShowModal(false)
-      }, 4000)
-      controller.abort()
-      setIsAbort(true)
+  const handleModal = (isRequestPassed = false) => {
+    if (isRequestPassed === true) {
+      setTimeout(() => setIsShowModal(false), 3000)
       return
     }
-
-    isAbort && setIsAbort(false)
-    setIsShowModal(!isShowModal)
+    if (isRequestPassed === false) {
+      setIsShowModal(false)
+      return
+    }
+    setIsShowModal(true)
   }
 
-  if (isLoading) return <Preloader />
+  if (isLoading || !token) return <Preloader />
 
   return (
     <div className={style.wrapper}>
@@ -78,7 +74,7 @@ const Profile = () => {
         <div className={style.greeting}>
           <h3>Добро пожаловать, {name}!</h3>
           <div>
-            <button onClick={onClickHandler}>update</button>
+            <button onClick={handleModal}>update</button>
           </div>
         </div>
       </div>
@@ -89,13 +85,7 @@ const Profile = () => {
           {author && <span>©{author}</span>}
         </blockquote>
       </div>
-      {isShowModal && (
-        <ProgressModal
-          isAbort={isAbort}
-          signal={signal}
-          onClickHandler={onClickHandler}
-        />
-      )}
+      {isShowModal && <ProgressModal handleModal={handleModal} />}
     </div>
   )
 }

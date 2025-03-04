@@ -1,8 +1,8 @@
 import React from 'react'
 
+import * as style from './NotFound.module.scss'
 import image from '../../assets/img/Page-Not-Found.png'
 
-import * as style from './NotFound.module.scss'
 
 const NotFound = () => {
   return (

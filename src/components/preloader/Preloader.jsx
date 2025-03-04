@@ -1,8 +1,8 @@
 import React from 'react'
 
+import * as style from './Preloader.module.scss'
 import image from '../../assets/img/spinner.webp'
 
-import * as style from './Preloader.module.scss'
 const Preloader = () => {
   return (
     <div className={style.preloader}>

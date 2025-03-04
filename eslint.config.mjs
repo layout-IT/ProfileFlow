@@ -5,7 +5,6 @@ import pluginReact from 'eslint-plugin-react'
 import eslintReactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
   { files: ['**/*.{js,mjs,cjs,jsx}'] },
   { languageOptions: { globals: globals.browser } },
@@ -16,7 +15,7 @@ export default [
       'react-hooks': eslintReactHooks,
       react: pluginReact,
       'config-prettier': eslintConfigPrettier,
-      import: eslintPluginImport, // Добавляем плагин import
+      import: eslintPluginImport,
     },
   },
   {
@@ -28,14 +27,23 @@ export default [
         'error',
         {
           groups: [
-            ['builtin', 'external'], // React, Redux и другие внешние библиотеки
-            ['internal', 'parent', 'sibling', 'index'], // Внутренние модули и компоненты
-            ['object', 'type'], // Объекты и типы
+            'builtin',
+            'external',
+            ['internal', 'parent', 'sibling', 'index'],
+            'type',
           ],
-          'newlines-between': 'always', // Пробелы между группами импортов
-          alphabetize: { order: 'asc', caseInsensitive: true }, // Сортировка по алфавиту
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
+      'react/prop-types': 'off',
+    },
+  },
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
 ]

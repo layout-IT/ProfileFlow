@@ -6,7 +6,6 @@ import { PATH_NAMES } from '../../constants'
 import { setIsAutorized } from '../../reducers/UserReducer'
 import Buttons from '../buttons/Buttons'
 import Routing from '../routing'
-
 import * as style from './App.module.scss'
 
 const App = () => {

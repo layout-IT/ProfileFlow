@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 import Button from './button/Button'
 import { API } from '../../api/API'
-import { setIsAutorized, setIsLoading } from '../../reducers/UserReducer'
 import { setCleanUp } from '../../reducers/AuthorReducer'
+import { setIsAutorized, setIsLoading } from '../../reducers/UserReducer'
 
 const Buttons = ({ array, isAuth }) => {
   const navigate = useNavigate()
@@ -16,7 +16,7 @@ const Buttons = ({ array, isAuth }) => {
       dispatch(setIsLoading(true))
       dispatch(setIsAutorized(false))
       const token = localStorage.getItem('token')
-
+      await new Promise(resolve => setTimeout(resolve, 2000))
       await API.delete('/logout', { token })
     } catch (err) {
       console.error(err)
@@ -24,8 +24,6 @@ const Buttons = ({ array, isAuth }) => {
   }
 
   const handleClick = async value => {
-    console.log({ value })
-
     if (value !== 'Sign out') {
       return
     }

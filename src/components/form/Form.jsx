@@ -22,7 +22,7 @@ const Form = ({ onSubmit }) => {
           autoComplete="new-password"
         />
         <p className={styles.helperText}>
-          We'll never share your email with anyone else.
+          We&apos;ll never share your email with anyone else.
         </p>
         {errors.email && <p className={styles.error}>{errors.email.message}</p>}
       </div>
