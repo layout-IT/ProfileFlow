@@ -1,22 +1,32 @@
-import React, { useEffect } from 'react'
-
-import Routing from '../routing'
-import Button from '../buttons/button/Button'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { PATH_NAMES } from '../../constants'
+import { setIsAutorized } from '../../reducers/UserReducer'
+import Buttons from '../buttons/Buttons'
+import Routing from '../routing'
 
 import * as style from './App.module.scss'
-import { useLocation, useNavigate } from 'react-router-dom'
-import Buttons from '../buttons/Buttons'
 
 const App = () => {
-  const [isAuth, setIsAuth] = React.useState(false)
-  const [isShowButton, setIsShowButton] = React.useState(false)
+  const isAutorized = useSelector(state => state.user.isAutorized)
+  const [isShowButton, setIsShowButton] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const modifiedPathname = pathname.replace(/^\/+/, '')
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/aboutus')
+      return
+    }
+    dispatch(setIsAutorized(true))
+  }, [])
+
+  useEffect(() => {
+    const modifiedPathname = pathname.replace(/^\/+/, '').toLocaleLowerCase()
 
     if (PATH_NAMES[modifiedPathname]) {
       navigate(PATH_NAMES[modifiedPathname].urlValue)
@@ -25,19 +35,14 @@ const App = () => {
       setIsShowButton(false)
     }
   }, [pathname])
+
   const buttonValues = Object.values(PATH_NAMES)
 
-  const {
-    aboutus: { buttonValue, urlValue },
-  } = PATH_NAMES
   return (
     <div className={style.wrapper}>
       {isShowButton && (
         <ul className={style.buttons}>
-          <li>
-            <Button name={buttonValue} path={urlValue} />
-          </li>
-          <Buttons array={buttonValues} isAuth={isAuth} />
+          <Buttons array={buttonValues} isAuth={isAutorized} />
         </ul>
       )}
       <Routing />

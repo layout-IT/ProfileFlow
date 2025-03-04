@@ -7,10 +7,14 @@
   "printWidth": 80,
   "tabWidth": 2,
   "importOrder": [
-    "^(react|redux|@?\\w)",
-    "^components/(.*)$",
-    "^[./]",
-    "^styles/(.*)$"
+    "^react$",
+    "^(react-redux|redux)",
+    "^react-router-dom$",
+    "^[./].*\\.(png|jpg|jpeg|webp|svg|gif)$",
+    "^[./].*\\.(scss|css)$",
+    "^../../components/(.*)$",
+    "^../../api/(.*)$",
+    "^../../reducers/(.*)$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true

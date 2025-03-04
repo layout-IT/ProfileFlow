@@ -1,56 +1,30 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import * as styles from './SignIn.module.scss'
+import { API } from '../../api/API'
+import Form from '../../components/form/Form'
+import Preloader from '../../components/preloader/Preloader'
+import { setIsAutorized, setIsLoading } from '../../reducers/UserReducer'
 const SignIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const isLoading = useSelector(state => state.user.isLoading)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const onSubmit = data => {
-    console.log('Form Data:', data)
+  const onSubmit = async data => {
+    try {
+      dispatch(setIsLoading(true))
+      const response = await API.post('/login', data)
+      const token = response?.data?.token
+      localStorage.setItem('token', token)
+      dispatch(setIsAutorized(true))
+      navigate('/profile')
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {/* Email */}
-      <div className={styles.formGroup}>
-        <label className={styles.label}>Email address</label>
-        <input
-          type="email"
-          placeholder="Enter email"
-          {...register('email', { required: 'Email is required' })}
-          className={styles.input}
-        />
-        <p className={styles.helperText}>
-          We'll never share your email with anyone else.
-        </p>
-        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
-      </div>
-
-      {/* Password */}
-      <div className={styles.formGroup}>
-        <label className={styles.label}>Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          {...register('password', { required: 'Password is required' })}
-          className={styles.input}
-        />
-        {errors.password && (
-          <p className={styles.error}>{errors.password.message}</p>
-        )}
-      </div>
-
-      {/* Кнопка Submit */}
-      <button type="submit" className={styles.submitButton}>
-        Submit
-      </button>
-    </form>
-  )
+  return <>{isLoading ? <Preloader /> : <Form onSubmit={onSubmit} />}</>
 }
 
 export default SignIn

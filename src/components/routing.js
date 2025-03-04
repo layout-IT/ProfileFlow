@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import { LazyAboutUs } from '../pages/about-us/AboutUs.lazy'
-import { LazySignIn } from '../pages/sign-in/SignIn.lazy'
-import NotFound from '../pages/not-found/NotFound'
+
 import Preloader from './preloader/Preloader'
+import { LazyAboutUs } from '../pages/about-us/AboutUs.lazy'
+import NotFound from '../pages/not-found/NotFound'
 import { LazyProfile } from '../pages/profile/Profile.lazy'
+import { LazySignIn } from '../pages/sign-in/SignIn.lazy'
 
 const Routing = () => {
   return (
@@ -40,5 +41,3 @@ const Routing = () => {
 }
 
 export default Routing
-
-// aboutUs

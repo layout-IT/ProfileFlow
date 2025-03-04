@@ -1,9 +1,14 @@
 // store.js
 import { createStore, combineReducers } from 'redux'
-import defReducer from '../reducers/defReducer'
+
+import AuthorReducer from '../reducers/AuthorReducer'
+import QuoteReducer from '../reducers/QuoteReducer'
+import UserReducer from '../reducers/UserReducer'
 
 const rootReducer = combineReducers({
-  def: defReducer,
+  user: UserReducer,
+  author: AuthorReducer,
+  quote: QuoteReducer,
 })
 
 const store = createStore(
