@@ -41075,11 +41075,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
-root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__.Provider, {
+root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.HashRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_5__.Provider, {
   store: _store_store__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App_App__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.19140db7ac0083a7a0c4.js.map
+//# sourceMappingURL=main.14686c4ab65006e9691c.js.map
