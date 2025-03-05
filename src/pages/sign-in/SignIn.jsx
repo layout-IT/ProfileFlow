@@ -21,6 +21,7 @@ const SignIn = () => {
     }
     setIsTokenChecked(true)
   })
+
   const onSubmit = async data => {
     try {
       dispatch(setIsLoading(true))
