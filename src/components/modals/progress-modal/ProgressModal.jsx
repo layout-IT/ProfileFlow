@@ -6,7 +6,6 @@ import { API } from '../../../api/API'
 import { PROGRESS_MODAL_TEXT } from '../../../constants'
 import { setAuthorId, setAuthorName } from '../../../reducers/AuthorReducer'
 import { setQuote, setQuoteId } from '../../../reducers/QuoteReducer'
-import { set } from 'react-hook-form'
 
 const ProgressModal = ({ handleModal }) => {
   const dispatch = useDispatch()
@@ -28,12 +27,16 @@ const ProgressModal = ({ handleModal }) => {
             return
           }
 
-          const { authorId, name } = response?.data
-          setAuthor(name)
-          dispatch(setAuthorId(authorId))
-          dispatch(setAuthorName(name))
+          const { authorId, name } = response.data
 
-          resolve(authorId)
+          if (response?.data) {
+            setAuthor(name)
+            dispatch(setAuthorId(authorId))
+            dispatch(setAuthorName(name))
+            resolve(authorId)
+          } else {
+            throw new Error('Ошибка: нет данных от API')
+          }
         } catch (error) {
           reject(error)
         }
@@ -45,18 +48,18 @@ const ProgressModal = ({ handleModal }) => {
         timerId = setTimeout(async () => {
           try {
             const result = await fetchQuote(authorId, token)
-            if (!result) {
-              reject('Ошибка запроса цитаты')
-              return
-            }
 
-            const { quoteId, quote } = result?.data
-            setAuthorQuote(quote)
-            dispatch(setQuote(quote))
-            dispatch(setQuoteId(quoteId))
-            setTimer(null)
+            if (result?.data) {
+              const { quoteId, quote } = result.data
+              setAuthorQuote(quote)
+              dispatch(setQuote(quote))
+              dispatch(setQuoteId(quoteId))
+              setTimer(null)
+            } else {
+              throw new Error('Ошибка: нет данных от API')
+            }
           } catch (error) {
-            reject(error)
+            console.error(error)
           }
         }, 2000)
 

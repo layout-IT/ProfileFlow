@@ -1,6 +1,6 @@
 export const API = {
   get: (url, params) => {
-    return new Promise((res, rej) => {
+    return new Promise(res => {
       if (url === '/info') {
         res({
           success: true,
