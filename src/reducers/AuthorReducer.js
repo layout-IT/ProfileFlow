@@ -2,13 +2,20 @@ const initialState = {
   name: '',
   id: null,
 }
+
+const actionTypes = {
+  AUTHOR_NAME: 'AUTHOR_NAME',
+  AUTHOR_ID: 'AUTHOR_ID',
+  CLEAN_UP: 'CLEAN_UP',
+}
+
 const AuthorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'AUTHOR_NAME':
+    case actionTypes.AUTHOR_NAME:
       return { ...state, name: action.payload }
-    case 'AUTHOR_ID':
+    case actionTypes.AUTHOR_ID:
       return { ...state, id: action.payload }
-    case 'CLEAN_UP':
+    case actionTypes.CLEAN_UP:
       return { ...state, name: '', id: null }
     default:
       return state
