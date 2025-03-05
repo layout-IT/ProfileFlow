@@ -27,6 +27,5 @@ temp/
 *.lock
 
 coverage/
-public/
 *.bak
 *.tmp
