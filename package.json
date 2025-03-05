@@ -11,7 +11,7 @@
     "build:prod": "webpack --env mode=production",
     "start": "webpack serve",
     "predeploy": "npm run build:dev",
-    "deploy": "gh-pages -d build:dev"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
