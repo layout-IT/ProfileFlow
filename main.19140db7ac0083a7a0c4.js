@@ -39805,7 +39805,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var API = {
   get: function get(url, params) {
-    return new Promise(function (res, rej) {
+    return new Promise(function (res) {
       if (url === '/info') {
         res({
           success: true,
@@ -40317,7 +40317,8 @@ var Routing = function Routing() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   PATH_NAMES: () => (/* binding */ PATH_NAMES),
-/* harmony export */   PROGRESS_MODAL_TEXT: () => (/* binding */ PROGRESS_MODAL_TEXT)
+/* harmony export */   PROGRESS_MODAL_TEXT: () => (/* binding */ PROGRESS_MODAL_TEXT),
+/* harmony export */   TEXT_ERROR: () => (/* binding */ TEXT_ERROR)
 /* harmony export */ });
 var PATH_NAMES = {
   aboutus: {
@@ -40344,6 +40345,10 @@ var PROGRESS_MODAL_TEXT = {
   step1: 'Requestiong author',
   step2: 'Requestiong quote',
   complleted: 'Completed'
+};
+var TEXT_ERROR = {
+  fromServer: 'Error 404: Invalid credentials',
+  toSend: 'Sorry, but this user has been denied registration.'
 };
 
 /***/ }),
@@ -40474,19 +40479,24 @@ var initialState = {
   name: '',
   id: null
 };
+var actionTypes = {
+  AUTHOR_NAME: 'AUTHOR_NAME',
+  AUTHOR_ID: 'AUTHOR_ID',
+  CLEAN_UP: 'CLEAN_UP'
+};
 var AuthorReducer = function AuthorReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
-    case 'AUTHOR_NAME':
+    case actionTypes.AUTHOR_NAME:
       return _objectSpread(_objectSpread({}, state), {}, {
         name: action.payload
       });
-    case 'AUTHOR_ID':
+    case actionTypes.AUTHOR_ID:
       return _objectSpread(_objectSpread({}, state), {}, {
         id: action.payload
       });
-    case 'CLEAN_UP':
+    case actionTypes.CLEAN_UP:
       return _objectSpread(_objectSpread({}, state), {}, {
         name: '',
         id: null
@@ -40539,19 +40549,24 @@ var initialState = {
   quote: '',
   id: null
 };
+var actionTypes = {
+  QUOTE: 'QUOTE',
+  QOTE_ID: 'QOTE_ID',
+  CLEAN_UP: 'CLEAN_UP'
+};
 var QuoteReducer = function QuoteReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
-    case 'QUOTE':
+    case actionTypes.QUOTE:
       return _objectSpread(_objectSpread({}, state), {}, {
         quote: action.payload
       });
-    case 'QOTE_ID':
+    case actionTypes.QOTE_ID:
       return _objectSpread(_objectSpread({}, state), {}, {
         id: action.payload
       });
-    case 'CLEAN_UP':
+    case actionTypes.CLEAN_UP:
       return _objectSpread(_objectSpread({}, state), {}, {
         quote: '',
         id: null
@@ -40603,15 +40618,19 @@ var initialState = {
   isAutorized: false,
   isLoading: false
 };
+var actionTypes = {
+  IS_LOADING: 'IS_LOADING',
+  AUTORIZED: 'AUTORIZED'
+};
 var UserReducer = function UserReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
-    case 'IS_LOADING':
+    case actionTypes.IS_LOADING:
       return _objectSpread(_objectSpread({}, state), {}, {
         isLoading: action.payload
       });
-    case 'AUTORIZED':
+    case actionTypes.AUTORIZED:
       return _objectSpread(_objectSpread({}, state), {}, {
         isAutorized: action.payload
       });
@@ -40739,7 +40758,7 @@ var store = (0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(rootReducer, wind
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "." + {"src_pages_about-us_AboutUs_jsx":"664ff35864e854182725","src_pages_profile_Profile_jsx":"e25a8bb7f95510a927d2","vendors-node_modules_react-hook-form_dist_index_esm_mjs":"5beca89fc504bec8c5d0","src_pages_sign-in_SignIn_jsx":"18fcb46817a8a99bb819"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + "." + {"src_pages_about-us_AboutUs_jsx":"664ff35864e854182725","src_pages_profile_Profile_jsx":"43119ac012a5264db858","vendors-node_modules_react-hook-form_dist_index_esm_mjs":"5beca89fc504bec8c5d0","src_pages_sign-in_SignIn_jsx":"6b3625cf7ac1be952435"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -41063,4 +41082,4 @@ root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElem
 
 /******/ })()
 ;
-//# sourceMappingURL=main.ba4b16d3764fe26b89c0.js.map
+//# sourceMappingURL=main.19140db7ac0083a7a0c4.js.map

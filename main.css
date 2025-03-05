@@ -3,24 +3,24 @@
   \***********************************************************************************************************************************************************************/
 .ANtp4 {
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.322);
+  border: 1px solid var(--semi-transparent-black);
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--white);
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .ANtp4:hover {
   transform: translateY(-5px);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.322);
+  box-shadow: 2px 2px 2px var(--semi-transparent-black);
 }
 .ANtp4:active {
   transform: translateY(0px);
-  background-color: rgb(228, 224, 224);
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.322);
+  background-color: var(--silver);
+  box-shadow: 2px 2px 2px var(--semi-transparent-black);
 }
 
 .iBLIE {
   padding: 10px;
-  background-color: rgb(228, 224, 224);
+  background-color: var(--silver);
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .iBLIE:hover {
@@ -70,6 +70,21 @@
 /*!*********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/App/App.module.scss ***!
   \*********************************************************************************************************************************************************/
+:root {
+  --silver: #f0f0f0;
+  --white: #fff;
+  --semi-transparent-black: rgba(0, 0, 0, 0.322);
+  --blue: #0066ff;
+  --light-gray: #ccc;
+  --very-light-gray: #f0f0f0;
+  --red: #f00;
+  --grey: #808080;
+  --dark-blue: rgba(0, 0, 139, 0.712);
+  --semi-transparent-dark-gray: rgba(126, 122, 122, 0.781);
+  --black: #000;
+  --dark-transparent-black: rgba(0, 0, 0, 0.212);
+}
+
 *,
 *::before,
 *::after {
