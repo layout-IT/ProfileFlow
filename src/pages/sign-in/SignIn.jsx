@@ -43,7 +43,6 @@ const SignIn = () => {
     console.log({ errorText, isLoading, isTokenChecked })
 
     if (isLoading) {
-      // Если идет загрузка и есть ошибка, показываем оба компонента (прелоадер и модалку с ошибкой)
       return errorText ? (
         <>
           <ModalError text={errorText} setErrorText={setErrorText} />

@@ -10,3 +10,8 @@ export const PROGRESS_MODAL_TEXT = {
   step2: 'Requestiong quote',
   complleted: 'Completed',
 }
+
+export const TEXT_ERROR = {
+  fromServer: 'Error 404: Invalid credentials',
+  toSend: 'Sorry, but this user has been denied registration.',
+}

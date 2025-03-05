@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as style from './ModalError.module.scss'
+import { TEXT_ERROR } from '../../../constants'
 import { setIsLoading } from '../../../reducers/UserReducer'
 
 const ModalError = ({ text, setErrorText }) => {
@@ -11,10 +12,13 @@ const ModalError = ({ text, setErrorText }) => {
     setErrorText('')
     dispach(setIsLoading(false))
   }
+
+  const displayText = TEXT_ERROR.fromServer === text ? TEXT_ERROR.toSend : text
+
   return (
     <div className={style.container}>
       <div className={style.modal}>
-        <p>{text}</p>
+        <p>{displayText}</p>
         <button onClick={onHandleClick}>назад</button>
       </div>
     </div>
