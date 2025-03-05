@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import ModalError from './modal-error/modalError'
 import { API } from '../../api/API'
 import Form from '../../components/form/Form'
 import Preloader from '../../components/preloader/Preloader'
@@ -9,6 +10,7 @@ import { setIsAutorized, setIsLoading } from '../../reducers/UserReducer'
 const SignIn = () => {
   const isLoading = useSelector(state => state.user.isLoading)
   const [isTokenChecked, setIsTokenChecked] = useState(false)
+  const [errorText, setErrorText] = useState('')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -32,19 +34,32 @@ const SignIn = () => {
       dispatch(setIsAutorized(true))
       navigate('/profile')
     } catch (err) {
+      setErrorText(err)
       console.error(err)
     }
   }
 
-  return (
-    <>
-      {isLoading || !isTokenChecked ? (
-        <Preloader />
+  const renderData = () => {
+    console.log({ errorText, isLoading, isTokenChecked })
+
+    if (isLoading) {
+      // Если идет загрузка и есть ошибка, показываем оба компонента (прелоадер и модалку с ошибкой)
+      return errorText ? (
+        <>
+          <ModalError text={errorText} setErrorText={setErrorText} />
+          <Form onSubmit={onSubmit} />
+        </>
       ) : (
-        <Form onSubmit={onSubmit} />
-      )}
-    </>
-  )
+        <Preloader />
+      )
+    } else if (!isTokenChecked) {
+      return <Preloader />
+    } else {
+      return <Form onSubmit={onSubmit} />
+    }
+  }
+
+  return <>{renderData()}</>
 }
 
 export default SignIn
