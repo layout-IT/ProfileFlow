@@ -276,11 +276,11 @@ var ModalError = function ModalError(_ref) {
     className: _ModalError_module_scss__WEBPACK_IMPORTED_MODULE_1__.modal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, displayText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: onHandleClick
-  }, "\u043D\u0430\u0437\u0430\u0434")));
+  }, "\u041D\u0430\u0437\u0430\u0434")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ModalError);
 
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_sign-in_SignIn_jsx.6b3625cf7ac1be952435.js.map
+//# sourceMappingURL=src_pages_sign-in_SignIn_jsx.bce4b5ad0a1a362b5607.js.map
