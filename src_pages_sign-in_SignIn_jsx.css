@@ -1,0 +1,71 @@
+/*!***********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/form/Form.module.scss ***!
+  \***********************************************************************************************************************************************************/
+form {
+  max-width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hUeSw {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.K1SzP {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.K1SzP:hover {
+  background-color: #f0f0f0;
+}
+
+.g6rwM {
+  margin-bottom: 15px;
+}
+
+.dn9Nu {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.MfaQ9 {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.TRl_A {
+  font-size: 12px;
+  color: gray;
+}
+
+.jAf8U {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.Zg8GN {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Zg8GN:hover {
+  background-color: rgba(0, 0, 139, 0.712);
+}
+
+/*# sourceMappingURL=src_pages_sign-in_SignIn_jsx.css.map*/

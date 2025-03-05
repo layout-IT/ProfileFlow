@@ -1,0 +1,137 @@
+/*!***********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/buttons/button/Button.module.scss ***!
+  \***********************************************************************************************************************************************************************/
+.ANtp4 {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.322);
+  border-radius: 10px;
+  background-color: white;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.ANtp4:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.322);
+}
+.ANtp4:active {
+  transform: translateY(0px);
+  background-color: rgb(228, 224, 224);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.322);
+}
+
+.iBLIE {
+  padding: 10px;
+  background-color: rgb(228, 224, 224);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+.iBLIE:hover {
+  transform: translateY(-5px);
+}
+/*!*********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/preloader/Preloader.module.scss ***!
+  \*********************************************************************************************************************************************************************/
+.AU82n {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.AU82n img {
+  animation: Cfc3i 1s linear infinite;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes Cfc3i {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*!***************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/pages/not-found/NotFound.module.scss ***!
+  \***************************************************************************************************************************************************************/
+.MqRyF {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/*!*********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/App/App.module.scss ***!
+  \*********************************************************************************************************************************************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  border: none;
+  outline: none;
+  background: none;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: none;
+  color: inherit;
+}
+
+.vhn2S {
+  padding: 30px;
+}
+.vhn2S .LBTUf {
+  display: flex;
+  margin-bottom: 30px;
+}
+.vhn2S .LBTUf li {
+  margin-right: 10px;
+}
+.vhn2S .LBTUf li:last-child {
+  margin: 0;
+}
+
+/*# sourceMappingURL=main.css.map*/
