@@ -35,3 +35,7 @@ npm run build:prod: Builds the project for production mode with Webpack.
 npm run start: Starts the development server with Webpack.
 npm run predeploy: Builds the project for deployment.
 npm run deploy: Deploys to GitHub Pages.
+
+## Description
+
+A chain of asynchronous requests has been implemented for two long-running operations on the backend. First, a request is made to retrieve the author's name, then, after its completion, a quote from that author is requested. The results, consisting of the author's name and the quote, are displayed on the user's profile. Before both requests are completed, the user can stop the process by pressing the "Cancel" button. переведи
