@@ -19,7 +19,7 @@ const ModalError = ({ text, setErrorText }) => {
     <div className={style.container}>
       <div className={style.modal}>
         <p>{displayText}</p>
-        <button onClick={onHandleClick}>Закрыть</button>
+        <button onClick={onHandleClick}>Cancel</button>
       </div>
     </div>
   )
