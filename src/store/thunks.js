@@ -41,7 +41,6 @@ export const fetchQuoteAndAuthor =
     try {
       dispatch(setIsLoading(true))
 
-      // Запрашиваем автора
       await delayOfPtomise()
       const response = await fetchAuthor(token)
 
@@ -54,7 +53,6 @@ export const fetchQuoteAndAuthor =
       dispatch(setAuthorId(authorId))
       dispatch(setAuthorName(name))
 
-      // Запрашиваем цитату
       await delayOfPtomise()
       const result = await fetchQuote(authorId, token)
 
@@ -67,7 +65,6 @@ export const fetchQuoteAndAuthor =
       dispatch(setQuote(quote))
       dispatch(setQuoteId(quoteId))
 
-      // Завершаем работу с таймером
       setTimer(null)
     } catch (error) {
       console.error('Ошибка в fetchQuoteAndAuthor:', error)
