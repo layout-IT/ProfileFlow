@@ -28,14 +28,14 @@ To register for the service, use the following details:
 
 The project includes the following scripts:
 
-npm run format: Runs Prettier to format the code.
-npm run lint: Checks the code with ESLint.
-npm run lint-fix: Fixes errors found by ESLint.
-npm run build:dev: Builds the project for development with Webpack.
-npm run build:prod: Builds the project for production mode with Webpack.
-npm run start: Starts the development server with Webpack.
-npm run predeploy: Builds the project for deployment.
-npm run deploy: Deploys to GitHub Pages.
+1. npm run format: Runs Prettier to format the code.
+2. npm run lint: Checks the code with ESLint.
+3. npm run lint-fix: Fixes errors found by ESLint.
+4. npm run build:dev: Builds the project for development with Webpack.
+5. npm run build:prod: Builds the project for production mode with Webpack.
+6. npm run start: Starts the development server with Webpack.
+7. npm run predeploy: Builds the project for deployment.
+8. npm run deploy: Deploys to GitHub Pages.
 
 ## Description
 
