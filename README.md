@@ -10,7 +10,7 @@ A project for development using Webpack, React, and other modern tools. It inclu
 To register for the service, use the following details:
 
 - **Email**: `aleksei@example.com`
-- **Пароль**: `lkJlkn8hj`
+- **Password**: `lkJlkn8hj`
 
 ## Installation
 
