@@ -40842,15 +40842,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// Комбинируем редьюсеры
 var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
   user: _reducers_UserReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   author: _reducers_AuthorReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   quote: _reducers_QuoteReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
-
-// Подключаем middleware и DevTools
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_3__.compose;
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(rootReducer, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_3__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_4__.thunk)));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
@@ -40961,8 +40957,6 @@ var fetchQuoteAndAuthor = function fetchQuoteAndAuthor(setTimer, setAuthorQuote,
             token = localStorage.getItem('token');
             _context3.prev = 1;
             dispatch((0,_reducers_UserReducer__WEBPACK_IMPORTED_MODULE_3__.setIsLoading)(true));
-
-            // Запрашиваем автора
             _context3.next = 5;
             return (0,_api_apiHelper__WEBPACK_IMPORTED_MODULE_0__.delayOfPtomise)();
           case 5:
@@ -40980,8 +40974,6 @@ var fetchQuoteAndAuthor = function fetchQuoteAndAuthor(setTimer, setAuthorQuote,
             setAuthor(name);
             dispatch((0,_reducers_AuthorReducer__WEBPACK_IMPORTED_MODULE_1__.setAuthorId)(authorId));
             dispatch((0,_reducers_AuthorReducer__WEBPACK_IMPORTED_MODULE_1__.setAuthorName)(name));
-
-            // Запрашиваем цитату
             _context3.next = 16;
             return (0,_api_apiHelper__WEBPACK_IMPORTED_MODULE_0__.delayOfPtomise)();
           case 16:
@@ -40999,8 +40991,6 @@ var fetchQuoteAndAuthor = function fetchQuoteAndAuthor(setTimer, setAuthorQuote,
             setAuthorQuote(quote);
             dispatch((0,_reducers_QuoteReducer__WEBPACK_IMPORTED_MODULE_2__.setQuote)(quote));
             dispatch((0,_reducers_QuoteReducer__WEBPACK_IMPORTED_MODULE_2__.setQuoteId)(quoteId));
-
-            // Завершаем работу с таймером
             setTimer(null);
             _context3.next = 31;
             break;
@@ -41101,7 +41091,7 @@ var fetchQuoteAndAuthor = function fetchQuoteAndAuthor(setTimer, setAuthorQuote,
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "." + {"src_pages_about-us_AboutUs_jsx":"533060b33ed9d92532b5","src_pages_profile_Profile_jsx":"684c1a1ab84cacc9639b","vendors-node_modules_react-hook-form_dist_index_esm_mjs":"5beca89fc504bec8c5d0","src_pages_sign-in_SignIn_jsx":"a2405a5a75ff78351fee"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + "." + {"src_pages_about-us_AboutUs_jsx":"533060b33ed9d92532b5","src_pages_profile_Profile_jsx":"684c1a1ab84cacc9639b","vendors-node_modules_react-hook-form_dist_index_esm_mjs":"5beca89fc504bec8c5d0","src_pages_sign-in_SignIn_jsx":"13a4d57e429d137b426d"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -41425,4 +41415,4 @@ root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElem
 
 /******/ })()
 ;
-//# sourceMappingURL=main.adae10bc96793b04f04d.js.map
+//# sourceMappingURL=main.ea24a19a1248f731278e.js.map

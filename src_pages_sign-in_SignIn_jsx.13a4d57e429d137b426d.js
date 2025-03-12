@@ -195,11 +195,6 @@ var SignIn = function SignIn() {
     };
   }();
   var renderData = function renderData() {
-    console.log({
-      errorText: errorText,
-      isLoading: isLoading,
-      isTokenChecked: isTokenChecked
-    });
     if (isLoading) {
       return errorText ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_modal_error_modalError__WEBPACK_IMPORTED_MODULE_1__["default"], {
         text: errorText,
@@ -283,4 +278,4 @@ var ModalError = function ModalError(_ref) {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_sign-in_SignIn_jsx.a2405a5a75ff78351fee.js.map
+//# sourceMappingURL=src_pages_sign-in_SignIn_jsx.13a4d57e429d137b426d.js.map
