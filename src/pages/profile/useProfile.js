@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { API } from '../../api/API'
-import { setIsLoading } from '../../reducers/UserReducer'
+import { fetchProfile } from '../../thunks'
 
 const useProfile = () => {
   const isLoading = useSelector(state => state.user.isLoading)
@@ -17,19 +16,6 @@ const useProfile = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const fetchProfile = async token => {
-    try {
-      dispatch(setIsLoading(true))
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      const response = await API.get('/profile', { token })
-      return response
-    } catch (error) {
-      console.error(error)
-    } finally {
-      dispatch(setIsLoading(false))
-    }
-  }
-
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -38,7 +24,7 @@ const useProfile = () => {
     }
     settoken(token)
 
-    fetchProfile(token).then(response => {
+    dispatch(fetchProfile(token)).then(response => {
       if (response) {
         setName(response.data.fullname.split(' ')[0])
       }

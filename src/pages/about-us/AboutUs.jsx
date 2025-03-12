@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
-import { API } from '../../api/API'
+import { getInfo } from '../../apiHelper'
 import Preloader from '../../components/preloader/Preloader'
 
 const AboutUs = () => {
   const [info, setInfo] = useState('')
   const [error, setError] = useState('')
 
-  const fetchInfo = async () => {
-    try {
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      const response = await API.get('/info')
-      setInfo(response.data.info)
-    } catch (err) {
-      setError(err.message || 'An error occurred')
-    }
-  }
-
   useEffect(() => {
-    fetchInfo()
+    getInfo(setInfo, setError)
   }, [])
 
   if (error) return <h2>{error}</h2>

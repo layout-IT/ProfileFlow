@@ -15,3 +15,7 @@ export const TEXT_ERROR = {
   fromServer: 'Error 404: Invalid credentials',
   toSend: 'Sorry, but this user has been denied registration.',
 }
+
+export const DELAY_TIME = {
+  delayBeforeRequest: 2000,
+}
