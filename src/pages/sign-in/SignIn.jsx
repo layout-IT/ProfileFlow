@@ -40,8 +40,6 @@ const SignIn = () => {
   }
 
   const renderData = () => {
-    console.log({ errorText, isLoading, isTokenChecked })
-
     if (isLoading) {
       return errorText ? (
         <>
