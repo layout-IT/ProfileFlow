@@ -24,7 +24,8 @@ To register for the service, use the following details:
 3. Install dependencies:
    npm install
 
-Scripts
+## Scripts
+
 The project includes the following scripts:
 
 npm run format: Runs Prettier to format the code.
