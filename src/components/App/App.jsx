@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { PATH_NAMES } from '../../constants'
-import { setIsAutorized } from '../../reducers/UserReducer'
+import { setIsAutorized } from '../../store/reducers/UserReducer'
 import Buttons from '../buttons/Buttons'
 import Routing from '../routing'
 import * as style from './App.module.scss'

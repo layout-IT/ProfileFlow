@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import * as style from './ModalError.module.scss'
 import { TEXT_ERROR } from '../../../constants'
-import { setIsLoading } from '../../../reducers/UserReducer'
+import { setIsLoading } from '../../../store/reducers/UserReducer'
 
 const ModalError = ({ text, setErrorText }) => {
   const dispach = useDispatch()

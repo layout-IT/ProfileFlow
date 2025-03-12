@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import ModalError from './modal-error/modalError'
-import { API } from '../../api/API'
+import { Api } from '../../api/Api'
 import Form from '../../components/form/Form'
 import Preloader from '../../components/preloader/Preloader'
-import { setIsAutorized, setIsLoading } from '../../reducers/UserReducer'
+import { setIsAutorized, setIsLoading } from '../../store/reducers/UserReducer'
 const SignIn = () => {
   const isLoading = useSelector(state => state.user.isLoading)
   const [isTokenChecked, setIsTokenChecked] = useState(false)
@@ -28,7 +28,7 @@ const SignIn = () => {
     try {
       dispatch(setIsLoading(true))
       await new Promise(resolve => setTimeout(resolve, 2000))
-      const response = await API.post('/login', data)
+      const response = await Api.post('/login', data)
       const token = response?.data?.token
       localStorage.setItem('token', token)
       dispatch(setIsAutorized(true))

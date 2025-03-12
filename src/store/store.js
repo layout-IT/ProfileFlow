@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { thunk } from 'redux-thunk'
 
-import AuthorReducer from '../reducers/AuthorReducer'
-import QuoteReducer from '../reducers/QuoteReducer'
-import UserReducer from '../reducers/UserReducer'
+import AuthorReducer from './reducers/AuthorReducer'
+import QuoteReducer from './reducers/QuoteReducer'
+import UserReducer from './reducers/UserReducer'
 
 // Комбинируем редьюсеры
 const rootReducer = combineReducers({

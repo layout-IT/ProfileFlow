@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchProfile } from '../../thunks'
+import { fetchProfile } from '../../store/thunks'
 
 const useProfile = () => {
   const isLoading = useSelector(state => state.user.isLoading)

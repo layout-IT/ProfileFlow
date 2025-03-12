@@ -4,7 +4,7 @@ import {
   fetchQuote,
   getProfile,
   makeRequest,
-} from './apiHelper'
+} from '../api/apiHelper'
 import { setAuthorId, setAuthorName } from './reducers/AuthorReducer'
 import { setQuote, setQuoteId } from './reducers/QuoteReducer'
 import { setIsAutorized, setIsLoading } from './reducers/UserReducer'
@@ -37,7 +37,6 @@ export const fetchProfile = token => async dispatch => {
 export const fetchQuoteAndAuthor =
   (setTimer, setAuthorQuote, setAuthor) => async dispatch => {
     const token = localStorage.getItem('token')
-    let timerId
 
     try {
       dispatch(setIsLoading(true))

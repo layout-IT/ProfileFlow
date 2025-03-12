@@ -1,4 +1,4 @@
-export const API = {
+export const Api = {
   get: (url, params) => {
     return new Promise(res => {
       if (url === '/info') {

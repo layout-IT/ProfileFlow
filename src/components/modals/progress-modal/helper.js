@@ -1,6 +1,9 @@
-import { fetchAuthor, fetchQuote } from '../../../apiHelper'
-import { setAuthorId, setAuthorName } from '../../../reducers/AuthorReducer'
-import { setQuote, setQuoteId } from '../../../reducers/QuoteReducer'
+import { fetchAuthor, fetchQuote } from '../../../api/apiHelper'
+import {
+  setAuthorId,
+  setAuthorName,
+} from '../../../store/reducers/AuthorReducer'
+import { setQuote, setQuoteId } from '../../../store/reducers/QuoteReducer'
 
 export const fetchAuthorAndQuote = (
   setAuthor,
@@ -28,7 +31,7 @@ export const fetchAuthorAndQuote = (
           dispatch(setAuthorName(name))
           resolve(authorId)
         } else {
-          throw new Error('Ошибка: нет данных от API')
+          throw new Error('Ошибка: нет данных от Api')
         }
       } catch (error) {
         reject(error)
@@ -49,7 +52,7 @@ export const fetchAuthorAndQuote = (
             dispatch(setQuoteId(quoteId))
             setTimer(null)
           } else {
-            throw new Error('Ошибка: нет данных от API')
+            throw new Error('Ошибка: нет данных от Api')
           }
         } catch (error) {
           console.error(error)

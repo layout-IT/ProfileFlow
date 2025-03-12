@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { getInfo } from '../../apiHelper'
+import { getInfo } from '../../api/apiHelper'
 import Preloader from '../../components/preloader/Preloader'
 
 const AboutUs = () => {

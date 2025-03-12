@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import Button from './button/Button'
-import { setCleanUp } from '../../reducers/AuthorReducer'
-import { setIsLoading } from '../../reducers/UserReducer'
-import { logoutUser } from '../../thunks'
+import { setCleanUp } from '../../store/reducers/AuthorReducer'
+import { setIsLoading } from '../../store/reducers/UserReducer'
+import { logoutUser } from '../../store/thunks'
 
 const Buttons = ({ array, isAuth }) => {
   const navigate = useNavigate()

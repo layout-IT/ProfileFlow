@@ -1,5 +1,5 @@
-import { API } from './api/API'
-import { DELAY_TIME } from './constants'
+import { Api } from './Api'
+import { DELAY_TIME } from '../constants'
 
 export const delayOfPtomise = async () => {
   return await new Promise(resolve =>
@@ -8,12 +8,12 @@ export const delayOfPtomise = async () => {
 }
 
 export const makeRequest = async token => {
-  await API.delete('/logout', { token })
+  await Api.delete('/logout', { token })
 }
 
 export const fetchAuthor = async token => {
   try {
-    return await API.get('/author', { token })
+    return await Api.get('/author', { token })
   } catch (error) {
     console.error(error)
   }
@@ -21,7 +21,7 @@ export const fetchAuthor = async token => {
 
 export const fetchQuote = async (authorId, token) => {
   try {
-    return await API.get('/quote', { token, authorId })
+    return await Api.get('/quote', { token, authorId })
   } catch (error) {
     console.error(error)
   }
@@ -30,7 +30,7 @@ export const fetchQuote = async (authorId, token) => {
 export const getInfo = async (setInfo, setError) => {
   try {
     await delayOfPtomise()
-    const response = await API.get('/info')
+    const response = await Api.get('/info')
     setInfo(response.data.info)
   } catch (err) {
     setError(err.message || 'An error occurred')
@@ -38,5 +38,5 @@ export const getInfo = async (setInfo, setError) => {
 }
 
 export const getProfile = async token => {
-  await await API.get('/profile', { token })
+  await await Api.get('/profile', { token })
 }
